@@ -1,7 +1,7 @@
 {
-  "name": "e-duzca",
+  "name": "cluster template",
   "version": "1.0.0",
-  "description": "courses plataform",
+  "description": "node cluster template",
   "main": "index.js",
   "scripts": {
     "dev": "tsc --noEmit && ts-node-dev --respawn --exit-child --transpile-only --ignore-watch node_modules --clear src/server/index.ts",
