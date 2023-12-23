@@ -5,12 +5,11 @@ interface ISendErrorsToLogServer {
   extraInfo?: any;
 }
 
+const enviroments = ['Sandbox', 'Production'];
+
 export async function sendErrorsToLogServer({ stack, extraInfo }: ISendErrorsToLogServer) {
-  if (
-    process.env.ENVIRONMENT?.includes('Sandbox') ||
-    process.env.ENVIRONMENT?.includes('Production')
-  ) {
-    axios.post('https://ada-logs.herokuapp.com/api/errors/create', {
+  if (enviroments.includes(process.env.ENVIRONMENT!)) {
+    axios.post(process.env.LOG_SERVER_URL!, {
       projectName: process.env.PROJECT_NAME,
       environment: process.env.ENVIRONMENT,
       side: 'Server',
